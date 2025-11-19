@@ -20,7 +20,5 @@ export class ZodValidationPipe implements PipeTransform {
 
       throw new BadRequestException('Validation failed');
     }
-    // biome-ignore lint/correctness/noUnreachable: Only dev mode
-    return value;
   }
 }

@@ -24,7 +24,15 @@
     "noFallthroughCasesInSwitch": false,
     "types": [
       "vitest/globals"
-    ]
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "test/*": [
+        "./test/*"
+      ]
+    }
   },
   "exclude": [
     "node_modules",
