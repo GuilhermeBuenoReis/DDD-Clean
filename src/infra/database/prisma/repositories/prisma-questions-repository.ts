@@ -1,0 +1,31 @@
+import { Injectable } from '@nestjs/common';
+import type { PaginationParams } from '@/core/repositories/pagination-params';
+import type { QuestionRepository } from '@/domain/forum/application/repositories/questions-repository';
+import type { Question } from '@/domain/forum/enterprise/entities/question';
+
+@Injectable()
+class PrismaQuestionsRepositoryRepository implements QuestionRepository {
+  findById(questionId: string): Promise<Question | null> {
+    throw new Error('Method not implemented.');
+  }
+
+  findBySlug(slug: string): Promise<Question | null> {
+    throw new Error('Method not implemented.');
+  }
+
+  findManyRecent(params: PaginationParams): Promise<Question[]> {
+    throw new Error('Method not implemented.');
+  }
+
+  create(question: Question): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+
+  save(question: Question): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+
+  delete(question: Question): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+}

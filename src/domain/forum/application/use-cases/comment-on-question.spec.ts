@@ -2,7 +2,7 @@ import { makeQuestion } from 'test/factories/make-question';
 import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/in-memory-question-attachments-repository';
 import { InMemoryQuestionCommentRepository } from 'test/repositories/in-memory-question-comments-repository';
 import { InMemoryQuestionRepository } from 'test/repositories/in-memory-question-repository';
-import { CommentOnQuestionUseCase } from './comment-on-question';
+import { CommentOnQuestionUseCase } from './comment-on-question.use-case';
 
 let inMemoryQuestionRepository: InMemoryQuestionRepository;
 let inMemoryQuestionCommentRepository: InMemoryQuestionCommentRepository;

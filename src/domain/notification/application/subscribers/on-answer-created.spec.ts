@@ -11,7 +11,7 @@ import {
   SendNotificationUseCase,
   type SendNotificationUseCaseRequest,
   type SendNotificationUseCaseResponse,
-} from '../use-cases/send-notification';
+} from '../use-cases/send-notification.use-case';
 import { OnAnswerCreated } from './on-answer-created';
 
 let inMemoryQuestionRepository: InMemoryQuestionRepository;

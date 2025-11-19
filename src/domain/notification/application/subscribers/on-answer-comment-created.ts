@@ -2,7 +2,7 @@ import { DomainEvents } from '@/core/events/domain-events';
 import type { EventHandler } from '@/core/events/event-handler';
 import type { AnswersRepository } from '@/domain/forum/application/repositories/answer-repository';
 import { AnswerCommentCreatedEvent } from '@/domain/forum/enterprise/events/answer-comments-created-event';
-import type { SendNotificationUseCase } from '../use-cases/send-notification';
+import type { SendNotificationUseCase } from '../use-cases/send-notification.use-case';
 
 export class OnAnswerCommentCreated implements EventHandler {
   constructor(

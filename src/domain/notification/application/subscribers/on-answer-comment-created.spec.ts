@@ -13,7 +13,7 @@ import {
   SendNotificationUseCase,
   type SendNotificationUseCaseRequest,
   type SendNotificationUseCaseResponse,
-} from '../use-cases/send-notification';
+} from '../use-cases/send-notification.use-case';
 import { OnAnswerCommentCreated } from './on-answer-comment-created';
 
 let inMemoryQuestionRepository: InMemoryQuestionRepository;

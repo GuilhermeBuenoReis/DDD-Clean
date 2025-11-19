@@ -2,7 +2,7 @@ import { makeAnswer } from 'test/factories/make-answer';
 import { InMemoryAnswerAttachmentsRepository } from 'test/repositories/in-memory-answer-attachments-repository';
 import { InMemoryAnswerCommentRepository } from 'test/repositories/in-memory-answer-comment-repository';
 import { InMemoryAnswersRepository } from 'test/repositories/in-memory-answers-repository';
-import { CommentOnAnswerUseCase } from './comment-on-answer';
+import { CommentOnAnswerUseCase } from './comment-on-answer.use-case';
 
 let inMemoryAnswerRepository: InMemoryAnswersRepository;
 let inMemoryAnswerCommentRepository: InMemoryAnswerCommentRepository;

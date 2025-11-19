@@ -3,8 +3,8 @@ import { CurrentUser } from 'src/infra/auth/current-user-decorator';
 import { JwtAuthGuard } from 'src/infra/auth/jwt.auth.guard';
 import type { UserPayload } from 'src/infra/auth/jwt-strategy';
 import { ZodValidationPipe } from 'src/infra/http/pipes/zod-validation-pipes';
-import { PrismaService } from 'src/infra/prisma/prisma.service';
 import z from 'zod';
+import { PrismaService } from '@/infra/database/prisma/prisma.service';
 
 const createQuestionBodySchema = z.object({
   title: z.string(),
