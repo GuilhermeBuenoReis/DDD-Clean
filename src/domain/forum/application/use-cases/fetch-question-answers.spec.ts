@@ -18,7 +18,7 @@ describe('Fetch questions answers', () => {
     sut = new FetchQuestionAnswersUseCase(inAnswersRepository);
   });
 
-  it('shoud be able to fetch recent questions', async () => {
+  it('should be able to fetch recent questions', async () => {
     await inAnswersRepository.create(
       makeAnswer({ questionId: new UniqueEntityID('questions-id-1') })
     );
@@ -39,7 +39,7 @@ describe('Fetch questions answers', () => {
     expect(result.value?.answers).toHaveLength(3);
   });
 
-  it('shoud be able to fetch paginated questions answers', async () => {
+  it('should be able to fetch paginated questions answers', async () => {
     for (let i = 1; i <= 22; i++) {
       await inAnswersRepository.create(
         makeAnswer({ questionId: new UniqueEntityID('questions-id-1') })

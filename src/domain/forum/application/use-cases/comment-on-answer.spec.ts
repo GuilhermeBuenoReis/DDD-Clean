@@ -23,7 +23,7 @@ describe('Comment on answer', () => {
     );
   });
 
-  it('shoud be able to comment on answer', async () => {
+  it('should be able to comment on answer', async () => {
     const answer = makeAnswer();
 
     inMemoryAnswerRepository.create(answer);

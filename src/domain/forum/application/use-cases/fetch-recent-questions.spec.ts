@@ -18,7 +18,7 @@ describe('Fetch recent questions', () => {
     sut = new FetchRecentQuestionsUseCase(inMemoryQuestionRepository);
   });
 
-  it('shoud be able to fetch recent questions', async () => {
+  it('should be able to fetch recent questions', async () => {
     await inMemoryQuestionRepository.create(
       makeQuestion({ createdAt: new Date(2022, 0, 20) })
     );
@@ -42,7 +42,7 @@ describe('Fetch recent questions', () => {
     ]);
   });
 
-  it('shoud be able to fetch paginated recent questions', async () => {
+  it('should be able to fetch paginated recent questions', async () => {
     for (let i = 1; i <= 22; i++) {
       await inMemoryQuestionRepository.create(makeQuestion());
     }

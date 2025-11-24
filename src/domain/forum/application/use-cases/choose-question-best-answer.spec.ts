@@ -30,7 +30,7 @@ describe('Choose question best answer', () => {
     );
   });
 
-  it('shoud be able to choose the question best answer', async () => {
+  it('should be able to choose the question best answer', async () => {
     const question = makeQuestion();
     const answer = makeAnswer({
       questionId: question.id,
@@ -47,7 +47,7 @@ describe('Choose question best answer', () => {
     expect(inMemoryQuestionRepository.items[0].bestAnswerId).toEqual(answer.id);
   });
 
-  it('shoud not be able to choose another user question best answer', async () => {
+  it('should not be able to choose another user question best answer', async () => {
     const question = makeQuestion({
       authorId: new UniqueEntityID('author-1'),
     });
