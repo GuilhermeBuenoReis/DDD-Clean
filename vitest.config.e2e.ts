@@ -9,7 +9,6 @@ export default defineConfig({
     root: './',
     setupFiles: ['./test/setup-e2e.ts'],
     maxConcurrency: 1,
-    minWorkers: 1,
     maxWorkers: 1,
   },
   plugins: [

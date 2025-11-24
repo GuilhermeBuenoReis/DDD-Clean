@@ -1,11 +1,11 @@
 import type { PaginationParams } from '@/core/repositories/pagination-params';
 import type { Question } from '@/domain/forum/enterprise/entities/question';
 
-export interface QuestionRepository {
-  findById(questionId: string): Promise<Question | null>;
-  findBySlug(slug: string): Promise<Question | null>;
-  findManyRecent(params: PaginationParams): Promise<Question[]>;
-  create(question: Question): Promise<void>;
-  save(question: Question): Promise<void>;
-  delete(question: Question): Promise<void>;
+export abstract class QuestionRepository {
+  abstract findById(questionId: string): Promise<Question | null>;
+  abstract findBySlug(slug: string): Promise<Question | null>;
+  abstract findManyRecent(params: PaginationParams): Promise<Question[]>;
+  abstract create(question: Question): Promise<void>;
+  abstract save(question: Question): Promise<void>;
+  abstract delete(question: Question): Promise<void>;
 }

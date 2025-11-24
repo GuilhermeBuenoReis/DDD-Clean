@@ -1,9 +1,11 @@
 import 'dotenv/config';
 import 'tsconfig-paths/register';
-import { execSync } from 'node:child_process';
+import { readdirSync, readFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
+import { resolve } from 'node:path';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from '@prisma/client';
+import { Client } from 'pg';
 
 let prisma: PrismaClient | undefined;
 
@@ -19,17 +21,47 @@ function generateUniqueDatabaseUrl(schemaId: string) {
   return url.toString();
 }
 
+async function runMigrations(databaseUrl: string, schemaId: string) {
+  const client = new Client({ connectionString: databaseUrl });
+
+  await client.connect();
+  await client.query(`CREATE SCHEMA IF NOT EXISTS "${schemaId}"`);
+  await client.query(`SET search_path TO "${schemaId}"`);
+
+  const migrationsPath = resolve(process.cwd(), 'prisma', 'migrations');
+  const migrationDirs = readdirSync(migrationsPath, { withFileTypes: true })
+    .filter(entry => entry.isDirectory())
+    .map(entry => entry.name)
+    .sort();
+
+  for (const dir of migrationDirs) {
+    const migrationScript = readFileSync(
+      resolve(migrationsPath, dir, 'migration.sql'),
+      'utf-8',
+    );
+
+    await client.query(migrationScript);
+  }
+
+  await client.end();
+}
+
 const schemaId = randomUUID();
 
 beforeAll(async () => {
   const databaseUrl = generateUniqueDatabaseUrl(schemaId);
+  const databaseSchema =
+    new URL(databaseUrl).searchParams.get('schema') ?? undefined;
 
   process.env.DATABASE_URL = databaseUrl;
 
-  execSync('npx prisma migrate deploy', { stdio: 'inherit' });
+  await runMigrations(databaseUrl, schemaId);
 
   prisma = new PrismaClient({
-    adapter: new PrismaPg({ connectionString: databaseUrl }),
+    adapter: new PrismaPg(
+      { connectionString: databaseUrl },
+      databaseSchema ? { schema: databaseSchema } : undefined,
+    ),
   });
 });
 

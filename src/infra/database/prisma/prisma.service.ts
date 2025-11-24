@@ -15,9 +15,14 @@ export class PrismaService
 {
   constructor(private readonly configService: ConfigService<env, true>) {
     const databaseUrl = configService.get('DATABASE_URL', { infer: true });
+    const databaseSchema =
+      new URL(databaseUrl).searchParams.get('schema') ?? undefined;
 
     super({
-      adapter: new PrismaPg({ connectionString: databaseUrl }),
+      adapter: new PrismaPg(
+        { connectionString: databaseUrl },
+        databaseSchema ? { schema: databaseSchema } : undefined
+      ),
       log: ['warn', 'error'],
     });
   }
