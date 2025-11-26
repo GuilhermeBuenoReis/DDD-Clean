@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import 'tsconfig-paths/register';
-import { readdirSync, readFileSync } from 'node:fs';
 import { randomUUID } from 'node:crypto';
+import { readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from '@prisma/client';
@@ -37,7 +37,7 @@ async function runMigrations(databaseUrl: string, schemaId: string) {
   for (const dir of migrationDirs) {
     const migrationScript = readFileSync(
       resolve(migrationsPath, dir, 'migration.sql'),
-      'utf-8',
+      'utf-8'
     );
 
     await client.query(migrationScript);
@@ -60,7 +60,7 @@ beforeAll(async () => {
   prisma = new PrismaClient({
     adapter: new PrismaPg(
       { connectionString: databaseUrl },
-      databaseSchema ? { schema: databaseSchema } : undefined,
+      databaseSchema ? { schema: databaseSchema } : undefined
     ),
   });
 });

@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { ZodValidationPipe } from 'src/infra/http/pipes/zod-validation-pipes';
 import { z } from 'zod';
-import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student';
+import { AuthenticateStudentUseCase } from '@/domain/forum/application/use-cases/authenticate-student.use-case';
 import { WrongCredentialsError } from '@/domain/forum/application/use-cases/errors/wrong-credentials-error';
 import { Public } from '@/infra/auth/public';
 

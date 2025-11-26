@@ -1,7 +1,8 @@
+import { Injectable } from '@nestjs/common';
 import { type Either, left, right } from '@/core/either';
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found';
-import type { Question } from '@/domain/forum/enterprise/entities/question';
-import type { QuestionRepository } from '../repositories/questions-repository';
+import { Question } from '@/domain/forum/enterprise/entities/question';
+import { QuestionRepository } from '../repositories/questions-repository';
 
 interface GetQuestionBySlugUseCaseRequest {
   slug: string;
@@ -14,6 +15,7 @@ type GetQuestionBySlugUseCaseResponse = Either<
   }
 >;
 
+@Injectable()
 export class GetQuestionBySlugUseCase {
   constructor(private questionsRepository: QuestionRepository) {}
 
